@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 
-
 body {
-    margin: 0%;
-    padding: 20px;
-    background-image:url(Skippit.png);
+    margin: 0;
+    padding: 0;
+    background-image: url(Skippit.png);
     background-size: cover;
     font-family: "Work Sans", sans-serif;
     min-height: 100vh;
@@ -14,6 +13,8 @@ body {
     display: flex;
     flex-direction: column; 
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 header {
@@ -22,118 +23,139 @@ header {
     align-items: center;
     width: 100%;
     position: relative;
+    margin-bottom: 20px;
 }
 
 header img {
-    padding: 20px;
     height: 50px;     
     width: auto;
 }
 
-.main-btn{
+.main-btn {
     display: flex;
     justify-content: center; 
     width: 100%; 
     gap: 25px;
 }
-.main-btn button{
+
+.main-btn button {
     font-weight: lighter;
     color: white;
     border: 0;
-    background-color: rgba(255, 255, 255, 0);
-    padding: 7px;
+    background-color: transparent;
+    padding: 10px 20px;
     font-size: 16px;
-    
- }
+    cursor: pointer;
+}
 
-#start{
-    font-family:"Work Sans";
-    width: 8%;
+#start {
+    font-family: "Work Sans";
+    min-width: 120px;
     border-radius: 99px;
     color: rgb(237, 233, 233);
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 16px;
     border: 2px solid rgb(255, 42, 0); 
-    box-shadow: 
-              0 0 5px rgb(255, 42, 0), /* Medium glow */
-              0 0 10px rgb(255, 42, 0); /* Outer glow */
+    box-shadow: 0 0 5px rgb(255, 42, 0), 0 0 10px rgb(255, 42, 0); 
+    text-align: center;
+}
 
- }
-
-.main-btn button.active{
-    font-family:"Work Sans";
+.main-btn button:active {
+    font-family: "Work Sans";
     font-weight: lighter; 
     border-radius: 99px;
     color: rgb(237, 233, 233);
     border: 0.5px solid orangered;
-    padding: 7px;
+    padding: 10px 20px;
     font-size: 16px;
-    box-shadow: 
-              0 0 5px rgb(255, 42, 0), /* Medium glow */
-              0 0 10px rgb(255, 42, 0); /* Outer glow */
-
+    box-shadow: 0 0 5px rgb(255, 42, 0), 0 0 10px rgb(255, 42, 0);
 }
 
 hr {
-  border: none;
-  border-top: 3px dotted rgb(56, 55, 55);
-  background-color: rgba(141, 142, 142, 0.298);
-  width: 50%;
-  width: calc(100% + 40px); 
-  margin-left: -20px;       
-  margin-right: -20px;
+    border: none;
+    border-top: 3px dotted rgb(56, 55, 55);
+    background-color: transparent;
+    height: 1px;
+    width: calc(100% + 40px); 
+    margin: 20px -20px;
 }
 
-h2{
+h2 {
     color: white;
     font-weight: bolder;
     font-size: 33px;
-    padding: 20px;
+    padding: 10px 0;
+    margin: 0;
 }
 
-.card-info h2{
-    transform: translateY(-30px);
+.card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.attendance-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(card.png);
+    background-size: cover;
+    width: 100%;
+    border-radius: 19px;
+    min-height: 260px;  
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-info h2 {
     color: white;
     font-size: 33px;
+    margin: 0 0 15px 0;
+    padding: 0;
 }
 
-.card-container{
-    display: flex;
-    padding: 20px;
-    flex-direction: row;
-    width: 100%;    
-}
-
-.attendance-card{
-    display: flex;
-    justify-content: space-around;
-    background-image: url(card.png);
-    width: 25%;
-    border-radius: 19px;
-    height: 260px;  
-    padding: 11px;
-}
-
-.stats{
+.stats {
     color: #b4b4b4; 
-    transform: translate(22px,-50px);
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.prediction{
-    padding-top: 3px;
-    line-height: 10px;
+.stats p {
+    margin: 0;
 }
 
-.progress-bar{
+.prediction {
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+.prediction p {
+    margin: 0;
+}
+
+.progress-bar {
     position: relative;
-    height: 170px;
-    width: 170px;
-    transform: translate(-25px,17px);
+    transform: translateX(-20px);
+    height: 140px;
+    width: 140px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .progress-bar::before {
@@ -141,60 +163,102 @@ h2{
     mask: radial-gradient(closest-side, transparent 80%, black 84%);
     content: "";
     position: absolute;
-    background: conic-gradient(#0cb303 calc(var(--percent) * 1%), 
-                                #000000 0deg); 
+    background: conic-gradient(#0cb303 calc(var(--percent) * 1%), #000000 0deg); 
     inset: 0;
     border-radius: 100%;
 }   
 
-.progress-value{
+.progress-value {
     position: relative;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 600;
     color: #ffffff;
 }
-.text{
-    font-size: 30px;
-    font-weight: 500;
-    color: #ff2727;
-}
 
-.options{
+.options {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-left:-30px ;
+    margin-left: -25px;
+    position: relative;
+    z-index: 10;
 }
 
-.options p{
+.options p {
     margin: 0;
     padding: 0;
-    line-height: 5;
 }
 
 #present-option,
 #bunk-option,
-#cancelled-option{
-
-    width: 80px;
+#cancelled-option {
+    width: 60px;
+    height: 60px;
     font-size: 20px;
-    height: 80px;
-    text-align: center;
-    border-radius: 50% ;
+    background-color: #ffffff;
+    border-radius: 50%;
     border: 2px dotted rgb(0, 0, 0);
-    box-shadow: 
-              0 0 5px rgb(176, 223, 246), /* Medium glow */
-              0 0 10px rgb(235, 232, 232); /* Outer glow */
+    box-shadow: 0 0 5px rgb(176, 223, 246), 0 0 10px rgb(235, 232, 232);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-#present-option.active{
+#present-option:active {
     background-image: url(p-btn.png);
+    background-size: cover;
 }
 
-#bunk-option.active{
+#bunk-option:active {
     background-image: url(b-btn.png);
+    background-size: cover;
 }
 
-#cancelled-option.active{
+#cancelled-option.active {
     background-color: #969494;
+}
+
+@media screen and (max-width: 600px) {
+    .app-container {
+        padding: 10px;
+    }
+    
+    header img {
+        height: 40px;
+    }
+
+    .attendance-card {
+        padding: 20px;
+        min-height: 220px;
+    }
+
+    .card-info h2 {
+        font-size: 28px;
+    }
+
+    .stats {
+        font-size: 14px;
+    }
+
+    .progress-bar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-value {
+        font-size: 24px;
+    }
+
+    #present-option,
+    #bunk-option,
+    #cancelled-option {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .options {
+        margin-left: -20px;
+    }
 }
