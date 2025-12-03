@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     background-image: url(Skippit.png);
     background-size: cover;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Work Sans","Ubuntu";
     min-height: 100vh;
 }
 
@@ -217,6 +218,83 @@ h2 {
 
 #cancelled-option.active {
     background-color: #969494;
+}
+
+.schedule-btn {
+    font-family: "Work Sans";
+    min-width: 120px;
+    border-radius: 99px;
+    color: rgb(237, 233, 233);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid rgb(255, 42, 0); 
+    box-shadow: 0 0 5px rgb(255, 42, 0), 0 0 10px rgb(255, 42, 0); 
+    text-align: center;
+    font-weight: lighter;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.schedule-view{
+    margin-left: 70px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+}
+.add-subject,
+.edit-btn{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+    border-radius:90px;
+    font-size:18px;
+    padding: 20px;
+    background-color: orangered;
+    color: white;
+    font-family:"Ubuntu";
+    font-weight: bolder;
+}
+
+/*.edit-btn:active{
+    transform: scale(.9);
+    transition: all 100ms ease;
+}
+
+.edit-btn:hover{
+     box-shadow: 0px 0px 0px 3px #30a1b8;
+}*/
+
+.edit-btn img{
+    height: 33px;
+    width: 100%;
+    max-width: 50px;
+}
+
+.week-card{
+    background-color: rgba(255, 255, 255, 0.208);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius:25px;
+    min-height: 200px;
+    text-align: center;
+    width:100%;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.week-card h2{
+    font-family:"Work Sans";
+    font-size: 45px;
+    font-weight: bolder;
 }
 
 @media screen and (max-width: 600px) {
