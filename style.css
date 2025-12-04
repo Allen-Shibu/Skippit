@@ -125,6 +125,11 @@ h2 {
     margin: 0;
 }
 
+#new-subject{
+    font-size: 23px;
+    color: #969494;
+}
+
 .card-container {
     display: flex;
     flex-direction: row;
