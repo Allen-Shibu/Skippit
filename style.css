@@ -61,7 +61,12 @@ header img {
     text-align: center;
 }
 
-.main-btn button:active {
+#start:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.097), 0 0 10px rgba(255, 255, 255, 0.28);
+    transform: scale(1.05);
+}
+
+#start:active {
     font-family: "Work Sans";
     font-weight: lighter; 
     border-radius: 99px;
@@ -70,6 +75,7 @@ header img {
     padding: 10px 20px;
     font-size: 16px;
     box-shadow: 0 0 5px rgb(255, 42, 0), 0 0 10px rgb(255, 42, 0);
+    transform: scale(1);
 }
 
 hr {
@@ -310,6 +316,7 @@ h2 {
     background-color: transparent;
     height: 1px;
 } 
+
 
 @media screen and (max-width: 800px) {
     .app-container {

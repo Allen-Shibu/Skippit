@@ -1,34 +1,23 @@
-let calEL = document.querySelector(".btn")
-const AttnBtn = document.querySelector("#attended")
-const totalBtn = document.querySelector("#total")
-let resultper = document.querySelector(".result-circle")
-const weekBtn=document.querySelectorAll(".week-btn button")
-
-
-calEL.addEventListener("click", function () {
-    let attended = Number(AttnBtn.value);
-    let total = Number(totalBtn.value);
-
-    if (total == 0) {
-        alert("Total class cannot be zero")
-        return
-    }
+function switchTab(tabName) {
+    const dashboardView = document.getElementById('dashboard-view')
+    const scheduleView = document.getElementById('schedule-view')
     
-    else if(total<attended){
-        alert("Total Classes cannot be less than attended classes")
-    }
-
-    let result = (attended / total) * 100
-    console.log(result);
+    const dashboardBtn = document.querySelector("button[onclick*='dashboard']");
+    const scheduleBtn = document.querySelector("button[onclick*='schedule']");
     
-    resultper.textContent = result.toFixed(1) + "%";
-    
-})
-
-weekBtn.forEach(button => {
-    button.addEventListener("click", function () {
-        weekBtn.forEach(btn => btn.classList.remove("active"));
-        this.classList.add("active");
+    if (tabName == 'dashboard') {
+        dashboardView.style.display = 'block'
+        scheduleView.style.display = 'none'
         
-    });
-});
+        scheduleBtn.removeAttribute("id");
+        dashboardBtn.setAttribute("id", "start");
+    }
+
+    else if (tabName == 'schedule') {
+        dashboardView.style.display = 'none'
+        scheduleView.style.display = 'block'
+        
+        dashboardBtn.removeAttribute('id')
+        scheduleBtn.setAttribute('id','start')
+    }
+}

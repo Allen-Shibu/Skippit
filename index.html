@@ -17,13 +17,13 @@
         </header>
 
         <div class="main-btn">
-            <button id="start" data-target="dashboard" onclick="switchTab('dashboard')">DASHBOARD</button>
-            <button class="schedule-btn" data-target="schedule" onclick="switchTab('schedule')" >SCHEDULE</button>
+            <button id="start" onclick="switchTab('dashboard')" >DASHBOARD</button>
+            <button onclick="switchTab('schedule')">SCHEDULE</button>
 
         </div>
 
         <hr>
-        <div id="dashboard-view" style="display: none;">
+        <div id="dashboard-view" data-tab="dashboard">
             <h2>Today's Schedule</h2>
 
             <div class="card-container">
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div id="schedule-view" style="display: block;">
+        <div id="schedule-view" style="display: none;">
             <div class="action-btn">
                 <button class="edit-btn"><img src="edit-btn.png">Edit</button>
                 <button class="add-subject">+ Add Subject</button>
