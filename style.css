@@ -532,6 +532,14 @@ select[name='takeation'] option {
     
 }
 
+#schedule-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Allows scrolling sideways */
+    padding-bottom: 20px;
+    width: 100%;
+}
+
 @media screen and (max-width: 800px) {
     .app-container {
         padding: 10px;

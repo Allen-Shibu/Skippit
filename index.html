@@ -90,14 +90,8 @@
                 <button class="edit-btn"><img src="edit-btn.png">Edit</button>
                 <button class="add-subject" onclick="toggle()">+ Add Subject</button>
             </div>
-                <div class="day-schedule">
-                <div class="week-card">
-                    <div class="day-card">
-                        <h2>MON</h2>
-                        <div class="subject-card">
-                            <div class="subjects">
-                                <p>IEEE</p>
-                                <hr>
+            
+            <div id="schedule-grid" class="schedule-grid"></div>
                                 <select name='takeation'>
                                     <option class='head'>Add Subject</option>
                                     <option value='Action 1'>Action 1</option>
@@ -105,45 +99,6 @@
                                     <option value='Action 3'>Action 3</option>
                                 </select>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="week-card">
-                    <div class="day-card">
-                        <h2>TUE</h2>
-                        <div class="subject-card">
-                            <p>IEEE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="week-card">
-                    <div class="day-card">
-                        <h2>WED</h2>
-                        <div class="subject-card">
-                            <p>IEEE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="week-card">
-                    <div class="day-card">
-                        <h2>THUR</h2>
-                        <div class="subject-card">
-                            <p>IEEE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="week-card">
-                    <div class="day-card">
-                        <h2>FRI</h2>
-                        <div class="subject-card">
-                            <p>IEEE</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -170,7 +125,7 @@
                     </div>
                 </form>
                 <div class="save-btn">
-                    <button id="save-btn" onclick="toggle();save();add_subject();">SAVE</button>
+                    <button id="save-btn" onclick="toggle();save();">SAVE</button>
                 </div> 
             </div>
    
