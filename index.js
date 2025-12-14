@@ -15,11 +15,14 @@ let schedule = JSON.parse(localStorage.getItem("skippit_schedule")) || {
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 document.addEventListener("DOMContentLoaded", () => {
+  TodayDashboard();
   renderSchedule();
-  renderDashboard();
+  emptyDashboard();
 });
 
 function switchTab(tabName) {
+  const isEmpty = emptyDashboard();
+  if (isEmpty) return;
   if (tabName == "dashboard") {
     dashboardView.style.display = "block";
     scheduleView.style.display = "none";
@@ -32,12 +35,11 @@ function switchTab(tabName) {
 
     if (dashboardBtn) dashboardBtn.removeAttribute("id");
     if (scheduleBtn) scheduleBtn.setAttribute("id", "start");
-
     renderSchedule();
   }
 }
 
-function renderDashboard() {
+function emptyDashboard() {
   const subjects = JSON.parse(localStorage.getItem("skippit_subjects"));
   if (!subjects || subjects.length === 0) {
     dashboardView.style.display = "none";
@@ -47,8 +49,6 @@ function renderDashboard() {
   }
 
   emptyState.style.display = "none";
-  scheduleView.style.display = "block";
-  dashboardView.style.display = "block";
 }
 
 let Subject = document.getElementById("subject-name");
@@ -81,10 +81,14 @@ function save() {
   ClassNum.value = "";
   TotalClass.value = "";
 
+  emptyDashboard();
   renderSchedule();
 }
+const popup = document.getElementById("popup");
+const blur = document.getElementById("blur");
 
-function toggle() {
+function toggle(e) {
+  if (e) e.stopPropagation();
   let blur = document.getElementById("blur");
   if (blur) blur.classList.toggle("active");
 
@@ -148,6 +152,64 @@ function addSubjectFromDropdown(day, selectElement) {
 
 function removeFromSchedule(day, index) {
   schedule[day].splice(index, 1);
-  localStorage.setItem("skippit_schedule", JSON.stringify(schedule));
+  localStorage.setItem("skippit_schedule", JSON.stringify(today_schedule));
   renderSchedule();
+}
+
+function TodayDashboard() {
+  const now = new Date();
+  const day = now.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day_schedule = JSON.parse(localStorage.getItem("skippit_schedule"));
+  let today_schedule =
+    JSON.parse(localStorage.getItem("skippit_subjects")) || [];
+
+  let todayName = days[day];
+  let today = day_schedule ? day_schedule[todayName] : [];
+
+  const dashboard = document.querySelector(".card-container");
+  today_schedule.forEach((sub) => {
+    let SubjectName = sub.name;
+    let Attend = sub.attended;
+    let Total = sub.total;
+    let Bunked = Total - Attend;
+    console.log(SubjectName, Attend, Total, Bunked);
+    const percentage = Math.round((Attend / Total) * 100);
+
+    const card = document.createElement("div");
+    card.className = "attendance-card";
+
+    card.innerHTML = `
+      <div class="card-info">
+        <h2>${SubjectName}</h2>
+        <p class='stats'>${Attend} Attended</p>
+        <p class='stats'>${Bunked} Bunked</p>
+        <p class='stats'>${Total} Total</p>
+        <p class='stats'>Requirement: 75%</p>
+      </div>
+
+      <div class="progress-bar"  style="--percent:${percentage}">
+      <span class="progress-value">${percentage}%</span>
+      </div>
+
+      <div class="options">
+        <button onclick="markPresent(${sub.id})" id="present-option">P</button>
+        <button onclick="markBunk(${sub.id})" id="bunk-option">B</button>
+        <button onclick="markCancel(${sub.id})" id="cancelled-option">C</button>
+      </div>
+    `;
+
+    dashboard.appendChild(card);
+  });
+  console.log(todayName);
+  console.log(today);
+  console.log(today_schedule);
 }
